@@ -1,4 +1,4 @@
-package domains.common;
+package com.example.network.domains.common;
 
 public class Settings {
     public static String URL = "http://10.0.2.2:5000";

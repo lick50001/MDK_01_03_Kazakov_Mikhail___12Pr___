@@ -1,8 +1,6 @@
-package domains.apis;
+package com.example.network.domains.apis;
 
-import androidx.loader.content.AsyncTaskLoader;
-
-import domains.callbacks.MyResponseCallback;
+import com.example.network.domains.callbacks.MyResponseCallback;
 import android.os.AsyncTask;
 
 public class MyAsyncTask extends AsyncTask<Void, Void, String> {

@@ -1,4 +1,4 @@
-package domains.models;
+package com.example.network.domains.models;
 
 public class User {
     public Integer id;

@@ -7,9 +7,9 @@ import com.example.network.domains.models.User;
 import com.google.gson.GsonBuilder;
 
 import org.jsoup.Jsoup;
+import org.jsoup.Connection;
 
 import java.io.IOException;
-import java.sql.Connection;
 
 public class UserUpdate extends MyAsyncTask {
     User user;
@@ -34,7 +34,7 @@ public class UserUpdate extends MyAsyncTask {
                     .execute();
 
             return response.statusCode() == 200 ? response.body() : "Error: " + response.body();
-        }catch (IOException e){
+        } catch (IOException e){
             return  "Error: " + e.getMessage();
         }
     }

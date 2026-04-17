@@ -3,29 +3,30 @@ package com.example.network.datas.users;
 import com.example.network.domains.apis.MyAsyncTask;
 import com.example.network.domains.callbacks.MyResponseCallback;
 import com.example.network.domains.common.Settings;
-
-import org.jsoup.Connection;
 import org.jsoup.Jsoup;
-
+import org.jsoup.Connection;
 import java.io.IOException;
 
-public class UserSend extends MyAsyncTask {
-    String mail;
-    public UserSend(String mail, MyResponseCallback callback){
+public class UserGet extends MyAsyncTask {
+    String token;
+
+    public UserGet(String token, MyResponseCallback callback) {
         super(callback);
-        this.mail = mail;
+        this.token = token;
     }
+
     @Override
-    protected String doInBackground(Void... voids){
+    protected String doInBackground(Void... voids) {
         try {
-            Connection.Response response = Jsoup.connect(Settings.URL + "/api/user/send?email=" + mail)
+            Connection connection = Jsoup.connect(Settings.URL + "/api/user/get") // Или другой эндпоинт
                     .ignoreContentType(true)
                     .ignoreHttpErrors(true)
                     .method(Connection.Method.GET)
-                    .execute();
+                    .header("token", token);
 
+            Connection.Response response = connection.execute();
             return response.statusCode() == 200 ? response.body() : "Error: " + response.body();
-        }catch (IOException e){
+        } catch (IOException e) {
             return "Error: " + e.getMessage();
         }
     }
